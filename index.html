@@ -7,10 +7,82 @@
 <body>
 
 <script>
-    const tab = [1,2,3];
+    const tab = [1,2,3,4,5];
     const tab1 = "Text";
     console.log(tab);
     console.log(tab1.__proto__);
+
+
+
+    console.log(tab);
+
+    const t = [[1, 2, 3], [1, 2, 3], [1, 2, 3]];
+    const tt = t.map(e=>e.reverse());
+    console.log(t);
+    console.log(tt);
+    const ttt = t.map(e=>e.reverse().join('-'));
+
+const t2 = [
+        {
+            name: 'Pawel', age: 32, favorites: [
+                'rybki', 'programowanie', 'alkohol'
+            ]
+        },
+        {
+            name: 'Karol', age: 17, favorites: [
+                'matematyka', 'grzybki', 'alkohol'
+            ]
+        },
+        {
+            name: 'Tomek', age: 67, favorites: [
+                'filmy', 'napady', 'narkotyki'
+            ]
+        },
+        {
+            name: 'Kasia', age: 12, favorites: [
+                'koty', 'gry', 'alkohol'
+            ]
+        },
+        {
+            name: 'Ania', age: 4, favorites: [
+                'rybki', 'koty', 'wolnomularstwo'
+            ]
+        },
+        {
+            name: 'Roman', age: 2, favorites: [
+                'roboty', 'niespanie', 'prace'
+            ]
+        },
+    ];
+
+
+
+   <!--const t3 = t2.filter ( e => e.age >=18)-->
+   <!--const t4 = t2.filter ( e => e.age <18).map( e => e.name);-->
+   <!--const t5 = t2.map(e => e)-->
+
+
+
+
+
+    const t5 = t2.filter ( e => e.age <18)
+        const t6 = t5.map(function(e){
+        let temp = e.favorites.filter(function(element){
+            return element === 'rybki';
+        });
+        return temp.length > 0 ? e.name : -1;
+    }).filter(function(e){
+        return e !== -1;
+    })
+
+    let total=0;
+    let len = 1000000
+    for (let i = 0; i<len;i++){
+    total = total + Math.random();
+
+    }
+    let avg = total/len;
+
 </script>
 
 </body>
