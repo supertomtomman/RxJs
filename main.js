@@ -1,0 +1,1 @@
+console.log("działa na przeglądarce");
