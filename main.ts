@@ -1,4 +1,5 @@
 import {Observable} from "rxjs";
+import {delay} from "rxjs/operator/delay";
 
 
 const  button = document.querySelector('button');
@@ -24,7 +25,15 @@ function load(url: string){
 
         xhr.open("GET", url);
         xhr.send();
-    }).map((a) => a.sort((a,b)=> a.pages > b.pages));
+    // }).map((a) => a.sort((a,b)=> a.pages > b.pages));
+    }).retryWhen((errors, limit = 5, delay = 2000) => {
+        return errors
+            .takeWhile((e, i) => {
+                console.log(i);
+               return i < limit
+            }).delay(delay);
+    })
+
 
 }
 
@@ -36,7 +45,7 @@ function renderBooks(books){
     });
 }
 
-click.flatMap(e => load("/books-api.json"))
+click.flatMap(e => load("/books-api9.json"))
     .subscribe(
         renderBooks,
         (e) => console.log(`error: ${e}`),
